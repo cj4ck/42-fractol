@@ -6,12 +6,15 @@
 /*   By: cjackows <cjackows@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 13:06:14 by cjackows          #+#    #+#             */
-/*   Updated: 2023/04/11 16:21:03 by cjackows         ###   ########.fr       */
+/*   Updated: 2023/04/12 14:40:14 by cjackows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/fractol.h"
 
+/*
+	Used for user input
+*/
 static void	input_check(int ac, char **av)
 {
 	int	error;
@@ -36,39 +39,35 @@ static void	input_check(int ac, char **av)
 	}
 }
 
-void	ft_fractal_specific_vars(t_fract *vars)
-{
-	if (ft_strncmp("Mandelbrot", vars->fractal, 10) == 0)
-		MANDELBROT;
-}
+// static t_fract	*mlx_setup(char **av)
+// {
+// 	t_fract	*vars;
 
-static t_fract	*mlx_setup(char **av)
+// 	vars = (t_fract *)malloc(sizeof(t_fract));
+//	vars->mlx_ptr = mlx_init();
+// 	vars->width = (double)ft_atoi(av[1]);
+// 	vars->height = (double)round(vars->width / 1.77);
+// 	vars->fractal = av[2];
+// 	vars->win_ptr = mlx_new_window(vars->mlx_ptr, vars->width, vars->height, \
+// 									vars->fractal);
+// 	vars->img_ptr = mlx_new_image(vars->mlx_ptr, vars->width, \
+// 									vars->height);
+// 	vars->img_data_addr = mlx_get_data_addr(vars->img_ptr, \
+// 		&vars->bits_per_pixel, &vars->line_length, &vars->endian);
+// 	return (vars);
+// }
+
+int	main(int ac, char *av[])
 {
 	t_fract	*vars;
-
-	vars = (t_fract *)malloc(sizeof(t_fract));
+	// input_check(ac, av);
 	vars->mlx_ptr = mlx_init();
 	vars->width = (double)ft_atoi(av[1]);
 	vars->height = (double)round(vars->width / 1.77);
-	// vars->fractal_int = ft_fractal_set(fractal_set);
 	vars->fractal = av[2];
 	vars->win_ptr = mlx_new_window(vars->mlx_ptr, vars->width, vars->height, \
 									vars->fractal);
 	vars->img_ptr = mlx_new_image(vars->mlx_ptr, vars->width, \
 									vars->height);
-	vars->img_data_addr = mlx_get_data_addr(vars->img_ptr, \
-		&vars->bits_per_pixel, &vars->line_length, &vars->endian);
-	if (ft_strncmp("Mandelbrot", vars->fractal, 10) == 0)
-		MANDELBROT;
-	else
-		
-	return (vars);
-}
-
-int	main(int ac, char *av[])
-{
-	t_fract	*vars;
-	input_check(ac, av);
-	vars = mlx_setup(av);
 	return (0);
 }

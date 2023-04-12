@@ -6,7 +6,7 @@
 /*   By: cjackows <cjackows@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 13:02:48 by cjackows          #+#    #+#             */
-/*   Updated: 2023/04/11 16:30:11 by cjackows         ###   ########.fr       */
+/*   Updated: 2023/04/12 14:26:53 by cjackows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,7 @@ typedef struct s_fract {
 }	t_fract;
 
 //	---= main.c =---
+
+
 
 #endif
