@@ -6,13 +6,13 @@
 #    By: cjackows <cjackows@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 13:04:04 by cjackows          #+#    #+#              #
-#    Updated: 2023/04/11 13:44:37 by cjackows         ###   ########.fr        #
+#    Updated: 2023/04/12 15:22:02 by cjackows         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fractol
 
-CC = cc
+CC = gcc
 CFLAGS = -O3
 #-fsanitize=address
 #-Wall -Wextra -Werror
