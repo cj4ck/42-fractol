@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cjackows <cjackows@student.42wolfsburg.    +#+  +:+       +#+        */
+/*   By: cjackows <cjackows@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 13:06:14 by cjackows          #+#    #+#             */
-/*   Updated: 2023/04/12 14:40:14 by cjackows         ###   ########.fr       */
+/*   Updated: 2023/04/14 12:25:48 by cjackows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/fractol.h"
+#include "fractol.h"
 
 /*
 	Used for user input
 */
-static void	input_check(int ac, char **av)
+static void	input_check (int ac, char **av)
 {
 	int	error;
 
