@@ -6,68 +6,53 @@
 /*   By: cjackows <cjackows@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 13:06:14 by cjackows          #+#    #+#             */
-/*   Updated: 2023/04/14 12:25:48 by cjackows         ###   ########.fr       */
+/*   Updated: 2023/04/17 16:14:13 by cjackows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "./inc/fractol.h"
 
-/*
-	Used for user input
-*/
-static void	input_check (int ac, char **av)
-{
-	int	error;
-
-	error = 0;
-	if (ac == 3)
-	{
-		if (ft_atoi(av[1]) < 800 || ft_atoi(av[1]) > 1920)
-			error = 1;
-		if ((ft_strncmp("Mandelbrot", av[2], 11) * \
-		ft_strncmp("Julia", av[2], 5)) != 0)
-			error = 1;
-	}
-	else
-		error = 1;
-	if (error == 1)
-	{
-		ft_printf("%sInvalid arguments \n	---= Program takes: =---\n\
-	[1] - window resolution ( x =< 1920 & x >= 800)\n\
-	[2] - type of fractol   ( \"Mandelbrot\" or \"Julia\")%s\n", ERROR, NC);
-		exit (error);
-	}
-}
-
-// static t_fract	*mlx_setup(char **av)
+// /*
+// 	Used for user input
+// */
+// static void	input_check (int ac, char **av)
 // {
-// 	t_fract	*vars;
+// 	int	error;
 
-// 	vars = (t_fract *)malloc(sizeof(t_fract));
-//	vars->mlx_ptr = mlx_init();
-// 	vars->width = (double)ft_atoi(av[1]);
-// 	vars->height = (double)round(vars->width / 1.77);
-// 	vars->fractal = av[2];
-// 	vars->win_ptr = mlx_new_window(vars->mlx_ptr, vars->width, vars->height, \
-// 									vars->fractal);
-// 	vars->img_ptr = mlx_new_image(vars->mlx_ptr, vars->width, \
-// 									vars->height);
-// 	vars->img_data_addr = mlx_get_data_addr(vars->img_ptr, \
-// 		&vars->bits_per_pixel, &vars->line_length, &vars->endian);
-// 	return (vars);
+// 	error = 0;
+// 	if (ac == 3)
+// 	{
+// 		if (ft_atoi(av[1]) < 800 || ft_atoi(av[1]) > 1920)
+// 			error = 1;
+// 		if ((ft_strncmp("Mandelbrot", av[2], 11) * \
+// 		ft_strncmp("Julia", av[2], 5)) != 0)
+// 			error = 1;
+// 	}
+// 	else
+// 		error = 1;
+// 	if (error == 1)
+// 	{
+// 		ft_printf("%sInvalid arguments \n	---= Program takes: =---\n\
+// 	[1] - window resolution ( x =< 1920 & x >= 800)\n\
+// 	[2] - type of fractol   ( \"Mandelbrot\" or \"Julia\")%s\n", ERROR, NC);
+// 		exit (error);
+// 	}
 // }
 
-int	main(int ac, char *av[])
+// int	main(int ac, char *av[])
+// {
+// 	void	*mlx_init();
+// 	return (0);
+// }
+
+// #include "./includes/minilibx_mms_20191025_beta/mlx.h"
+
+int main()
 {
-	t_fract	*vars;
-	// input_check(ac, av);
-	vars->mlx_ptr = mlx_init();
-	vars->width = (double)ft_atoi(av[1]);
-	vars->height = (double)round(vars->width / 1.77);
-	vars->fractal = av[2];
-	vars->win_ptr = mlx_new_window(vars->mlx_ptr, vars->width, vars->height, \
-									vars->fractal);
-	vars->img_ptr = mlx_new_image(vars->mlx_ptr, vars->width, \
-									vars->height);
-	return (0);
+    void *mlx = mlx_init();
+    void *win = mlx_new_window(mlx, 640, 360, "Tutorial Window - Create Image");
+    
+    // The following code goes here.
+
+    mlx_loop(mlx);
 }

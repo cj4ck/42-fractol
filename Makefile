@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cjackows <cjackows@student.42wolfsburg.    +#+  +:+       +#+         #
+#    By: cjackows <cjackows@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 13:04:04 by cjackows          #+#    #+#              #
-#    Updated: 2023/04/12 15:22:02 by cjackows         ###   ########.fr        #
+#    Updated: 2023/04/17 16:11:04 by cjackows         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,13 +17,13 @@ CFLAGS = -O3
 #-fsanitize=address
 #-Wall -Wextra -Werror
 
-LIBFT_DIR = ./includes/libft/
+LIBFT_DIR = ./inc/libft/
 SRCS_DIR = ./
-HDRS_DIR = ./includes/
-MLX_DIR = ./includes/minilibx-linux/
+HDRS_DIR = ./inc/
+MLX_DIR = ./inc/minilibx_mms_20191025_beta/
 
 LIBFT = $(LIBFT_DIR)libft.a
-MLX = $(MLX_DIR)libmlx.a
+MLX = $(MLX_DIR)libmlx.dylib
 OBJS = $(SRCS:%.c=%.o)
 
 SRCS =	main.c
