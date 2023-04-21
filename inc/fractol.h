@@ -6,7 +6,7 @@
 /*   By: cjackows <cjackows@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 13:02:48 by cjackows          #+#    #+#             */
-/*   Updated: 2023/04/17 16:10:42 by cjackows         ###   ########.fr       */
+/*   Updated: 2023/04/20 17:50:25 by cjackows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,25 @@
 typedef struct s_fract {
 	void			*mlx_ptr;
 	void			*win_ptr;
+	void			*mlx_ptr2;
+	void			*win_ptr2;
 
-	void			*img;
+	double		r_c;
+	double		i_c;
+	double		i_z;
+	double		r_z;
+	double		x;
+	double		y;
+	
+	double		temp;
+	double		it;
+
+	void			*img_ptr;
 	char			*img_addr;
+	int		bits_per_pixel;
+	int		line_length;
+
+	int		endian;
 }	t_fract;
 
 //	---= main.c =---
