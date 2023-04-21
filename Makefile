@@ -6,7 +6,7 @@
 #    By: cjackows <cjackows@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 13:04:04 by cjackows          #+#    #+#              #
-#    Updated: 2023/04/17 16:11:04 by cjackows         ###   ########.fr        #
+#    Updated: 2023/04/21 11:36:44 by cjackows         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ LIBFT = $(LIBFT_DIR)libft.a
 MLX = $(MLX_DIR)libmlx.dylib
 OBJS = $(SRCS:%.c=%.o)
 
-SRCS =	main.c
+SRCS =	main.c hooks.c color.c mandelbrot.c image_processing.c parsing.c
 
 #compile objs with -I to include directories with header files
 HDRS = -I$(HDRS_DIR) -I$(LIBFT_DIR) -I$(MLX_DIR)
