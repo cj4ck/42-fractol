@@ -6,7 +6,7 @@
 /*   By: cjackows <cjackows@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 09:54:21 by cjackows          #+#    #+#             */
-/*   Updated: 2023/04/21 14:59:43 by cjackows         ###   ########.fr       */
+/*   Updated: 2023/04/21 16:07:31 by cjackows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,11 @@ void	ft_mandelbrot(t_data *data)
 		while (data->y < data->win_width)
 		{
 			ft_mandel_calc_c(data);
-			while (data->it < 20 && (sqrt(pow(data->r_z, 2) + pow(data->i_z, 2)) <= 2))
+			while (data->it < 40 && (sqrt(pow(data->r_z, 2) + pow(data->i_z, 2)) <= 2))
 			{
 				ft_mandel_calc_z(data);
 			}
-			if (data->it < 20)
+			if (data->it < 40)
 			{
 				my_mlx_pixel_put(data, 0x00000000);
 			}
