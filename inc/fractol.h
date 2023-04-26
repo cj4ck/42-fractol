@@ -6,7 +6,7 @@
 /*   By: cjackows <cjackows@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 13:02:48 by cjackows          #+#    #+#             */
-/*   Updated: 2023/04/21 11:48:46 by cjackows         ###   ########.fr       */
+/*   Updated: 2023/04/26 13:48:43 by cjackows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,55 +48,51 @@
 # define JULIA 991
 # define BURNING_SHIPS 992
 
-// ---= structs =---
-typedef	struct	s_parsing {
-
-}	t_parsing;
 typedef struct s_data {
-	char	*win_title;
-	int		win_width;
-	int		win_height;
+	//* ---=[ MLX ]=---
+	void	*mlx_ptr;	//*	Pointer to MLX instance */
+	void	*win_ptr;	//*	Pointer to MLX window */
+	char	*win_title;	//*	Pointer to window title */
+	int		win_width;	//*	Height of image in pixels */
+	int		win_height; //*	Height of window in pixels */
 
-	void			*mlx_ptr;
-	void			*win_ptr;
-	void			*mlx_ptr2;
-	void			*win_ptr2;
+	//* ---=[ Image processing ]=---
+	void	*img_ptr;	//*	Pointer to MLX image */
+	char	*img_data;	//*	Pointer to image data buffer */
+	int		width;		//*	Width of image in pixels */
+	int		height;		//*	Height of image in pixels */
+	int		bpp;		//*	Number of bits per pixel */
+	int		line_size;	//*	Number of bytes per line */
+	int		endian;		//*	Endianness of pixel data */
+	double	y; //?
+	double	x; //?
 
-	double		r_c;
-	double		i_c;
-	double		i_z;
-	double		r_z;
-	double		x;
-	double		y;
-	
-	double		temp;
-	double		it;
+	//* ---=[ Fractol rendering ]=---
+	double	i_c;
+	double	r_c;
+	double	i_z;
+	double	r_z;
+	double	temp;
+	double	it;
 
-	void			*img_ptr;
-	char			*img_addr;
-	int		bits_per_pixel;
-	int		line_length;
-
-	int		endian;
 }	t_data;
 
-//	---=[ main.c ]=---
+//*	---=[ main.c ]=---
 
-//	---=[ parsing.c ]=---
-
-//	---=[ setuo.c ]=---
+//*	---=[ setup.c ]=---
 t_data	*ft_init(int ac, char **av);
 
-//	---=[ color.c ]=---
-//	---=[ hooks.c ]=---
-//	---=[ mandelbrot.c ]=---
-void	ft_mandel_calc_c(t_data *env);
-void	ft_mandel_calc_z(t_data *env);
-void	ft_mandelbrot(t_data *env);
-
-//	---=[ image_processing.c ]=---
+//*	---=[ image_processing.c ]=---
 void	my_mlx_pixel_put(t_data *env, int color);
-void    ft_image_processing(t_data *data);
+void	ft_image_processing(t_data *data);
 
+//*	---=[ color.c ]=---
+
+//*	---=[ hooks.c ]=---
+
+//*	---=[ mandelbrot.c ]=---
+// void	ft_mandel_calc_c(t_data *env);
+// void	ft_mandel_calc_z(t_data *env);
+// void	ft_mandelbrot(t_data *env);
 
 #endif
