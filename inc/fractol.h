@@ -6,7 +6,7 @@
 /*   By: cjackows <cjackows@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 13:02:48 by cjackows          #+#    #+#             */
-/*   Updated: 2023/04/26 13:48:43 by cjackows         ###   ########.fr       */
+/*   Updated: 2023/04/28 14:54:36 by cjackows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,13 @@
 // # include "./keymacros.h"
 # include <math.h>
 
-//	---= ft_printf Macros =---
-# define ERROR "\033[0;31m!ERROR | "
+// *	---=[ Printf Macros ]=---
+# define ERROR "\033[0;31m!ERROR: "
 # define GREEN "\033[1;32m"
 # define NC "\033[0m"
 
+// ?	---=[ Hooks ]=---
+//?		[ ]	Move them to makefile somehow
 # define MOUSE_WHEEL_UP 4
 # define MOUSE_WHEEL_DOWN 5
 # define MOUSE_LEFT 1
@@ -49,14 +51,14 @@
 # define BURNING_SHIPS 992
 
 typedef struct s_data {
-	//* ---=[ MLX ]=---
+//*		---=[ MLX ]=---
 	void	*mlx_ptr;	//*	Pointer to MLX instance */
 	void	*win_ptr;	//*	Pointer to MLX window */
 	char	*win_title;	//*	Pointer to window title */
 	int		win_width;	//*	Height of image in pixels */
 	int		win_height; //*	Height of window in pixels */
 
-	//* ---=[ Image processing ]=---
+//*		---=[ Image processing ]=---
 	void	*img_ptr;	//*	Pointer to MLX image */
 	char	*img_data;	//*	Pointer to image data buffer */
 	int		width;		//*	Width of image in pixels */
@@ -67,7 +69,7 @@ typedef struct s_data {
 	double	y; //?
 	double	x; //?
 
-	//* ---=[ Fractol rendering ]=---
+//*		---=[ Fractol rendering ]=---
 	double	i_c;
 	double	r_c;
 	double	i_z;
@@ -77,20 +79,21 @@ typedef struct s_data {
 
 }	t_data;
 
-//*	---=[ main.c ]=---
+//*		---=[ main.c ]=---
 
-//*	---=[ setup.c ]=---
+//*		---=[ setup.c ]=---
 t_data	*ft_init(int ac, char **av);
 
-//*	---=[ image_processing.c ]=---
+//*		---=[ image_processing.c ]=---
 void	my_mlx_pixel_put(t_data *env, int color);
 void	ft_image_processing(t_data *data);
+unsigned char	**ft_image_buffer_init(unsigned char **buffer, t_data *data);
 
-//*	---=[ color.c ]=---
+//*		---=[ color.c ]=---
 
-//*	---=[ hooks.c ]=---
+//*		---=[ hooks.c ]=---
 
-//*	---=[ mandelbrot.c ]=---
+//*		---=[ mandelbrot.c ]=---
 // void	ft_mandel_calc_c(t_data *env);
 // void	ft_mandel_calc_z(t_data *env);
 // void	ft_mandelbrot(t_data *env);
