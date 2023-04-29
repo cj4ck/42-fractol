@@ -6,7 +6,7 @@
 /*   By: cjackows <cjackows@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 13:02:48 by cjackows          #+#    #+#             */
-/*   Updated: 2023/04/28 14:54:36 by cjackows         ###   ########.fr       */
+/*   Updated: 2023/04/29 09:51:53 by cjackows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ typedef struct s_data {
 }	t_data;
 
 //*		---=[ main.c ]=---
+int	my_exit(t_data *data, int failure);
 
 //*		---=[ setup.c ]=---
 t_data	*ft_init(int ac, char **av);

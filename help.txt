@@ -1,0 +1,3 @@
+ARGS:
+1. resolution
+2. type of Fractal

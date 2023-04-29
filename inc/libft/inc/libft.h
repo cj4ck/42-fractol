@@ -6,7 +6,7 @@
 /*   By: cjackows <cjackows@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 03:24:51 by cjackows          #+#    #+#             */
-/*   Updated: 2023/04/28 14:23:32 by cjackows         ###   ########.fr       */
+/*   Updated: 2023/04/29 09:49:56 by cjackows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <limits.h>
+#include <fcntl.h>
 
 typedef struct s_list
 {

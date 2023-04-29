@@ -6,13 +6,30 @@
 /*   By: cjackows <cjackows@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 13:06:14 by cjackows          #+#    #+#             */
-/*   Updated: 2023/04/28 15:07:05 by cjackows         ###   ########.fr       */
+/*   Updated: 2023/04/29 09:53:13 by cjackows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./inc/fractol.h"
 
 //!		---=[ parsing.c ]=---
+
+void	ft_input_check(t_data *data, int ac, char **av)
+{
+	if (ac < 2 || ac > 4 || (av[1][0] != 'S' && ac < 3))
+		my_exit(data, 1);
+	if (av[1][1] || !ft_strchr("MJBNS", (int)av[1][0]))
+		my_exit(data, 1);
+	if (av[1][0] == 'S')
+		return ;
+	if (av[2][1] || !ft_strchr("RGBD", (int)av[2][0]))
+		my_exit(data, 1);
+	// if (av[1][0] == 'J')
+	// 	check_julia(e, ac, av);
+	else if (ac != 3)
+		my_exit(data, 1);
+}
+
 /**
  * @brief Parses command line arguments and 
  * sets the window width, height, and title.
@@ -30,12 +47,10 @@ void ft_parse(t_data *data, int ac, char **av)
 	//?			[ ] Autozoom?
 	//?			[ ] Psychodelic effects?
 	//?			[ ] Multiple windows?
-	if (ac == 3)
-	{
-		data->win_width = (double)ft_atoi(av[1]);
-		data->win_height = (double)round(data->win_width); // / 1.77
-		data->win_title = av[2];
-	}
+	ft_input_check(data, ac, av);
+	data->win_width = (double)ft_atoi(av[1]);
+	data->win_height = (double)round(data->win_width) / 1.77;
+	data->win_title = av[2];
 }
 
 //!		---=[ init.c ]=---
@@ -56,14 +71,14 @@ t_data	*ft_init(int ac, char **av)
 	data->mlx_ptr = mlx_init();
 	if (data->mlx_ptr == NULL)
 	{
-		printf("%sError: Failed to initialize new window%s\n", ERROR, NC);
+		ft_printf("%sFailed to initialize MLX%s\n", ERROR, NC);
 		exit (EXIT_FAILURE);
 	}
 	data->win_ptr = mlx_new_window(data->mlx_ptr, data->win_width, \
 	data->win_height, data->win_title);
 	if (data->win_ptr == NULL)
 	{
-		printf("%sError: Failed to initialize new window%s\n", ERROR, NC);
+		ft_printf("%sFailed to initialize new window%s\n", ERROR, NC);
 		exit (EXIT_FAILURE);
 	}
 	return (data);
@@ -75,9 +90,31 @@ static int	ft_key_press_hook(int keycode, t_data *data)
 	if (keycode == KEY_ESCAPE)
 	{
 		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-		exit(EXIT_SUCCESS);
 	}
 	return (0);
+}
+
+int	my_exit(t_data *data, int failure)
+{
+	int		fd;
+	char	text[1500];
+	int		readsize;
+	int		discard;
+
+	if (failure)
+	{
+		ft_printf("%s", ERROR);
+		fd = open("help.txt", 0);
+		readsize = read(fd, text, 1500);
+		discard = write(1, text, readsize);
+		discard = write(1, "\n", 1);
+		exit(1);
+	}
+	else
+		mlx_destroy_image(data->mlx_ptr, data->img_ptr);
+	discard = write(1, "Exit.\n", 6);
+	(void)discard;
+	exit(EXIT_SUCCESS);
 }
 
 //!		---=[ main.c ]=---
