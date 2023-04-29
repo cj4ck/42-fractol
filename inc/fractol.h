@@ -6,7 +6,7 @@
 /*   By: cjackows <cjackows@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 13:02:48 by cjackows          #+#    #+#             */
-/*   Updated: 2023/04/29 09:51:53 by cjackows         ###   ########.fr       */
+/*   Updated: 2023/04/29 10:53:41 by cjackows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <math.h>
 
 // *	---=[ Printf Macros ]=---
-# define ERROR "\033[0;31m!ERROR: "
+# define ERROR "\033[0;41mERROR: "
 # define GREEN "\033[1;32m"
 # define NC "\033[0m"
 
@@ -80,7 +80,7 @@ typedef struct s_data {
 }	t_data;
 
 //*		---=[ main.c ]=---
-int	my_exit(t_data *data, int failure);
+int	ft_exit(t_data *data, int failure);
 
 //*		---=[ setup.c ]=---
 t_data	*ft_init(int ac, char **av);

@@ -1,3 +1,7 @@
-ARGS:
-1. resolution
-2. type of Fractal
+Invalid parameters passed to the program.
+Program requires the following parameters:
+1) Type of fractal
+     - "M" Mandelbrot
+     - "J" Julia
+     - "B" Burning ship
+2)  Select base color for starting color scheme
