@@ -6,7 +6,7 @@
 #    By: cjackows <cjackows@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 13:04:04 by cjackows          #+#    #+#              #
-#    Updated: 2023/04/28 14:57:43 by cjackows         ###   ########.fr        #
+#    Updated: 2023/05/02 09:12:14 by cjackows         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,19 +21,21 @@ LIBFT_DIR = ./inc/libft/
 SRCS_DIR = ./
 HDRS_DIR = ./inc/
 MLX_DIR = ./inc/minilibx_mms_20191025_beta/
+PNG_DIR = ./
 
 LIBFT = $(LIBFT_DIR)libft.a
 MLX = $(MLX_DIR)libmlx.dylib
+PNG = $(PNG_DIR)libpng.dylib
 OBJS = $(SRCS:%.c=%.o)
 
-SRCS =	main.c hooks.c color.c mandelbrot.c image_processing.c parsing.c
+SRCS =	main.c hooks.c color.c mandelbrot.c image_processing.c parsing.c magic.c
 
 #compile objs with -I to include directories with header files
 HDRS = -I$(HDRS_DIR) -I$(LIBFT_DIR) -I$(MLX_DIR)
 
 #compile executable with -L/-l to include directories with libraries/libraries
 #themselves.
-LIBS = -L$(LIBFT_DIR) -L$(MLX_DIR) -lft -lmlx -lm -framework OpenGL \
+LIBS = -L$(LIBFT_DIR) -L$(MLX_DIR) -L$(PNG_DIR) -lft -lmlx -lm -framework OpenGL \
 -framework AppKit
 
 #compiles source files without linking. Is used to only update the source files

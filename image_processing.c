@@ -6,7 +6,7 @@
 /*   By: cjackows <cjackows@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 09:57:22 by cjackows          #+#    #+#             */
-/*   Updated: 2023/04/28 14:52:11 by cjackows         ###   ########.fr       */
+/*   Updated: 2023/05/02 08:51:20 by cjackows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,23 @@
 //? int				mlx_put_image_to_window(void *mlx_ptr, void *win_ptr, void *img_ptr, int x, int y);
 //? unsigned int	mlx_get_color_value(void *mlx_ptr, int color);
 
+
 /**
  * @brief	Initializes a new image for the given MLX data.
  *
- * @param data Pointer to the MLX data struct.
+ * @param data Pointer to the program data struct.
  */
 void	ft_image_init(t_data *data)
 {
 	data->img_ptr = mlx_new_image(data->mlx_ptr, data->win_width, \
 	data->win_height);
-	data->img_data = mlx_get_data_addr(data->img_ptr, &data->bpp, \
-	&data->line_size, &data->endian);
-	if (data->img_data == NULL)
+	if (data->img_ptr == NULL)
 	{
 		printf("%sFailed to initialize new image%s\n", ERROR, NC);
 		exit(EXIT_FAILURE);
 	}
+	data->img_data = mlx_get_data_addr(data->img_ptr, &data->bpp, \
+	&data->line_size, &data->endian);
 }
 
 /**
@@ -44,7 +45,7 @@ void	ft_image_init(t_data *data)
  *
  * @param buffer Pointer to the main image buffer.
  * 	(*4 bytes per pixel (RGBA))
- * @param data Pointer to the MLX data struct.
+ * @param data Pointer to the program data struct.
  */
 unsigned char	**ft_image_buffer_init(unsigned char **buffer, t_data *data)
 {

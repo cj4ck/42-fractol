@@ -6,7 +6,7 @@
 /*   By: cjackows <cjackows@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 13:02:48 by cjackows          #+#    #+#             */
-/*   Updated: 2023/04/29 10:53:41 by cjackows         ###   ########.fr       */
+/*   Updated: 2023/05/02 08:46:38 by cjackows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,11 @@
 # define JULIA 991
 # define BURNING_SHIPS 992
 
+/**
+ * @brief Program data struct. It stores MLX vars as well as 
+ * many other vars so they are easy to acces across the 
+ * whole codebase by just passing a right pointer.
+ */
 typedef struct s_data {
 //*		---=[ MLX ]=---
 	void	*mlx_ptr;	//*	Pointer to MLX instance */
@@ -80,12 +85,13 @@ typedef struct s_data {
 }	t_data;
 
 //*		---=[ main.c ]=---
-int	ft_exit(t_data *data, int failure);
+void	ft_exit(t_data *data, int failure);
 
 //*		---=[ setup.c ]=---
 t_data	*ft_init(int ac, char **av);
 
 //*		---=[ image_processing.c ]=---
+void	ft_image_init(t_data *data);
 void	my_mlx_pixel_put(t_data *env, int color);
 void	ft_image_processing(t_data *data);
 unsigned char	**ft_image_buffer_init(unsigned char **buffer, t_data *data);
@@ -93,6 +99,7 @@ unsigned char	**ft_image_buffer_init(unsigned char **buffer, t_data *data);
 //*		---=[ color.c ]=---
 
 //*		---=[ hooks.c ]=---
+int	ft_key_press_hook(int keycode, t_data *data);
 
 //*		---=[ mandelbrot.c ]=---
 // void	ft_mandel_calc_c(t_data *env);

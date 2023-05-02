@@ -6,28 +6,13 @@
 /*   By: cjackows <cjackows@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 13:06:14 by cjackows          #+#    #+#             */
-/*   Updated: 2023/04/29 11:57:40 by cjackows         ###   ########.fr       */
+/*   Updated: 2023/05/02 09:12:43 by cjackows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./inc/fractol.h"
 
 //!		---=[ parsing.c ]=---
-
-void	ft_input_check(t_data *data, int ac, char **av)
-{
-	if (ac < 2 || ac > 4)
-		ft_exit(data, 1);
-	if (!ft_strchr("MJB", (int)av[1][0]))
-		ft_exit(data, 1);
-	// if (!ft_strchr("RGBD", (int)av[2][0]))
-		// ft_exit(data, 1);
-	// if (av[1][0] == 'J')
-	// 	check_julia(e, ac, av);
-	// else if (ac != 3)
-	// 	ft_exit(data, 1);
-}
-
 /**
  * @brief Parses command line arguments and 
  * sets the window width, height, and title.
@@ -74,8 +59,8 @@ t_data	*ft_init(int ac, char **av)
 		ft_printf("%sFailed to initialize MLX%s\n", ERROR, NC);
 		exit (EXIT_FAILURE);
 	}
-	data->win_width = 1089;
-	data->win_height = 580;
+	data->win_width = 1920;
+	data->win_height = 1920;
 	data->win_ptr = mlx_new_window(data->mlx_ptr, data->win_width, \
 	data->win_height, data->win_title);
 	if (data->win_ptr == NULL)
@@ -86,17 +71,32 @@ t_data	*ft_init(int ac, char **av)
 	return (data);
 }
 
-//!		---=[ hooks.c ]=---
-static int	ft_key_press_hook(int keycode, t_data *data)
+// void	ft_fractal_type(t_data *data, char **av)
+// {
+	
+// }
+
+//!		---=[ main.c ]=---
+int main(int ac, char *av[])
 {
-	if (keycode == KEY_ESCAPE)
-	{
-		ft_exit(data, 0);
-	}
+	t_data	*data;
+
+	data = ft_init(ac, av);
+	// ft_image_init(data);
+	mlx_key_hook(data->win_ptr, ft_key_press_hook, data);
+	mlx_loop(data->mlx_ptr);
 	return (0);
 }
 
-int	ft_exit(t_data *data, int failure)
+/**
+ * @brief Exits the program and frees memory,
+ * prints an error message if there's a failure.
+ * 
+ * @param data  A pointer to the program data structure.
+ * @param failure A flag indicating if the program failed or not.
+ * @return void
+ */
+void	ft_exit(t_data *data, int failure)
 {
 	int		fd;
 	char	text[1500];
@@ -118,28 +118,6 @@ int	ft_exit(t_data *data, int failure)
 		free(data);
 	}
 	else
-	{
-	mlx_destroy_image(data->mlx_ptr, data->img_ptr);
-	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-	free(data);
-	}
+		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
 	exit(EXIT_SUCCESS);
-}
-
-void	ft_fractal_type(t_data *data, char **av)
-{
-	
-}
-
-//!		---=[ main.c ]=---
-int main(int ac, char *av[])
-{
-	t_data *data;
-	
-	data = ft_init(ac, av);
-	// ft_image_init(data);
-	// ft_mandelbrot(data);
-	mlx_key_hook(data->win_ptr, ft_key_press_hook, data);
-	mlx_loop(data->mlx_ptr);
-	return (0);
 }
