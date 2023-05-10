@@ -6,7 +6,7 @@
 /*   By: cjackows <cjackows@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:15:54 by cjackows          #+#    #+#             */
-/*   Updated: 2023/05/10 15:51:31 by cjackows         ###   ########.fr       */
+/*   Updated: 2023/05/10 18:45:15 by cjackows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,22 +58,56 @@ int	choose_fractal(int keycode, t_env *main)
 {
 	if (keycode == KEY_ESC)
 		my_exit(main, 0);
-	if (keycode == KEY_1)
+	else if (keycode == KEY_1)
 	{
 		main->fractal_type = '1';
 		main->win_title = "Famous Mandelbrot set by Benoit Mandelbrot";
 		start_fractal(main);
 	}
-	if (keycode == KEY_2)
+	else if (keycode == KEY_2)
 	{
 		main->fractal_type = '2';
-		main->win_title = "Alluring Julia set by Gaston Julia";
+		main->win_title = "Alluring Julia set by Gaston Julia #1";
 		start_fractal(main);
 	}
-	if (keycode == KEY_3)
+	else if (keycode == KEY_3)
 	{
 		main->fractal_type = '3';
 		main->win_title = "Burning Ship set by Michael Michelitsch and Otto E";
+		start_fractal(main);
+	}
+	else
+		choose_fractal2(keycode, main);
+	return (0);
+}
+
+/**
+ * @brief More Julia!
+ */
+int	choose_fractal2(int keycode, t_env *main)
+{
+	if (keycode == KEY_4)
+	{
+		main->fractal_type = '4';
+		main->win_title = "Alluring Julia set #2 Dimensional Rift";
+		start_fractal(main);
+	}
+	else if (keycode == KEY_5)
+	{
+		main->fractal_type = '5';
+		main->win_title = "Alluring Julia set #3 Anemone";
+		start_fractal(main);
+	}
+	else if (keycode == KEY_6)
+	{
+		main->fractal_type = '6';
+		main->win_title = "Alluring Julia #4 Space Station";
+		start_fractal(main);
+	}
+	else if (keycode == KEY_7)
+	{
+		main->fractal_type = '7';
+		main->win_title = "Alluring Julia #5 Slightest Touch";
 		start_fractal(main);
 	}
 	return (0);
@@ -93,10 +127,6 @@ int	win_destroy(t_env *e)
  */
 int	my_exit(t_env *e, int failure)
 {
-	int		fd;
-	char	text[1500];
-	int		readsize;
-
 	if (failure == -1)
 	{
 		exit(EXIT_FAILURE);
@@ -112,16 +142,4 @@ int	my_exit(t_env *e, int failure)
 		exit(EXIT_FAILURE);
 	}
 	return (0);
-}
-
-/**
- * @brief Function for printing error and exiting the program. Basicly on
- * failure it displays error_msg for example place where it failed. 
- * It's very usefull to debug things and still exit without memory leaks.
- */
-void	ft_error(t_env *e, char	*error_msg, int failure)
-{
-	ft_printf("%s%s%s\n", ERROR, error_msg, NC);
-	if (failure)
-		my_exit(e, failure);
 }

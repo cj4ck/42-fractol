@@ -6,7 +6,7 @@
 /*   By: cjackows <cjackows@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:16:04 by cjackows          #+#    #+#             */
-/*   Updated: 2023/05/10 17:12:19 by cjackows         ###   ########.fr       */
+/*   Updated: 2023/05/10 18:43:58 by cjackows         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,36 @@ void	set_env(t_env *e)
 		e->fractal = julia;
 	else if (e->fractal_type == '3')
 		e->fractal = burningship;
+	else if (e->fractal_type == '4')
+	{
+		e->fractal = julia;
+		e->julia_x = -0.162;
+		e->julia_y = 1.04;
+	}
+	else
+		set_env2(e);
+}
+
+void	set_env2(t_env *e)
+{
+	if (e->fractal_type == '5')
+	{
+		e->fractal = julia;
+		e->julia_x = -1.476;
+		e->julia_y = 0;
+	}
+	else if (e->fractal_type == '6')
+	{
+		e->fractal = julia;
+		e->julia_x = -0.4;
+		e->julia_y = -0.59;
+	}
+	else if (e->fractal_type == '7')
+	{
+		e->fractal = julia;
+		e->julia_x = -1.05;
+		e->julia_y = 0.27;
+	}
 	else
 		my_exit(e, 1);
 }
@@ -109,12 +139,4 @@ void	set_default(t_env *e)
 	e->outside_set_str = "solid";
 	e->hud_color = 0xFFFFFFFF;
 	calc_xyranges(e);
-}
-
-void	set_vars_brot(t_env *e)
-{
-	e->x_min = -2.7;
-	e->x_max = e->x_min * -0.6;
-	e->x_range = e->x_max - e->x_min;
-	e->iter = 100;
 }

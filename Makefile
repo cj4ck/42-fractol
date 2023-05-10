@@ -6,7 +6,7 @@
 #    By: cjackows <cjackows@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/04 18:32:51 by cjackows          #+#    #+#              #
-#    Updated: 2023/05/10 17:25:44 by cjackows         ###   ########.fr        #
+#    Updated: 2023/05/10 18:22:51 by cjackows         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,9 +28,8 @@ TOTAL_PROGRESS = $(words $(OBJ))
 
 NAME		=	fractol
 CC			=	cc
-CFLAGS		=	-O3
-# -fsanitize=address 
-#-Wall -Wextra -Werror
+CFLAGS		=	-O3 -Wall -Wextra -Werror
+#-fsanitize=address 
 LIBFT		=	./inc/libft/libft.a
 LIBFT_DIR	=	./inc/libft/
 HDRS_DIR	=	./inc/

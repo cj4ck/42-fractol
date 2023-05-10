@@ -32,8 +32,8 @@
 #define STRIKETHROUGH "\e[9m"
 #define RED "\e[31m"
 
-# define WIN_WIDTH 500
-# define WIN_HEIGHT 500
+# define WIN_WIDTH 1920
+# define WIN_HEIGHT 780
 
 typedef struct s_e
 {
@@ -118,12 +118,13 @@ typedef struct s_e
 	char	*test;
 }	t_env;
 
-// *	---=[ Debugging functions | debugging.c ]=---
-void	ft_debug(char *str, char*str2, t_env	*env);
-void	ft_debug_this(char	*str);
+// // *	---=[ Debugging functions | debugging.c ]=---
+// void	ft_debug(char *str, char*str2, t_env	*env);
+// void	ft_debug_this(char	*str);
 
 // *	---=[ Main | main.c ]=---
-int		choose_fractal(int keycode, t_env *e);
+int		choose_fractal(int keycode, t_env *main);
+int		choose_fractal2(int keycode, t_env *main);
 int		my_exit(t_env *e, int failure);
 int		win_destroy(t_env *e);
 void	ft_error(t_env *e, char	*error_msg, int failure);
@@ -131,8 +132,11 @@ void	ft_error(t_env *e, char	*error_msg, int failure);
 // *	---=[ Setup MLX and Vars | setup.c ]=---
 void	start_fractal(t_env *e);
 void	set_env(t_env *e);
+void	set_env2(t_env *e);
 void	set_mlx(t_env *e);
 void	set_default(t_env *e);
+
+// *	---=[ Set the mandelbrot vars | mandelbrot.c ]=---
 void	set_vars_brot(t_env *e);
 
 // *	---=[ Input processing | input_processing.c ]=---
